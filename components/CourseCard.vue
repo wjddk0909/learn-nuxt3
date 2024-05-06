@@ -12,14 +12,22 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-  thumbnail: {
-    type: String,
-    default: '',
-  },
-  title: String,
-  subtitle: String,
-});
+interface Props {
+  thumbnail: string;
+  title: string;
+  subtitle: string;
+}
+defineProps<Props>();
+// defineProps({
+//   thumbnail: {
+//     type: String,
+//     default: '',
+//   },
+//   title: String,
+//   subtitle: String,
+// });
 
-defineEmits(['click']);
+defineEmits<{
+  click: [];
+}>();
 </script>
