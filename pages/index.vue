@@ -10,14 +10,14 @@
         :key="courseSlug"
         class="col-12 col-md-4 col-sm-6"
       >
-        <RouterLink v-slot="{ navigate }" custom :to="`/course/${courseSlug}`">
+        <NuxtLink v-slot="{ navigate }" custom :to="`/course/${courseSlug}`">
           <CourseCard
             :title="title"
             :subtitle="subtitle"
             :thumbnail="thumbnail"
             @click="navigate"
           />
-        </RouterLink>
+        </NuxtLink>
       </div>
     </div>
   </q-page>

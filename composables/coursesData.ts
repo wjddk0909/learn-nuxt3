@@ -1,7 +1,6 @@
-// import type { Course } from '~/types/course';
+import type { Course } from '~/types/course';
 
-// const courses: Course[] = [
-const courses = [
+const courses: Course[] = [
   {
     courseSlug: 'html-css',
     title: '입문자를 위한, HTML&CSS 웹 개발 입문',
