@@ -51,6 +51,13 @@
           unelevated
           :to="prevCourse.path"
         />
+        <q-btn
+          label="쿼리 추가"
+          color="dark"
+          unelevated
+          :to="{ path: $route.path, query: { timestamp: Date.now() } }"
+        />
+        {{ $route.fullPath }}
         <q-space />
         <q-btn
           v-if="nextCourse"
@@ -69,6 +76,9 @@ const route = useRoute();
 const courseSlug = route.params.courseSlug as string;
 const { course, prevCourse, nextCourse } = useCourse(courseSlug);
 console.log('courseSlug.vue 컴포넌트 setup hooks');
+definePageMeta({
+  key: (route) => route.fullPath,
+});
 </script>
 
 <style scoped></style>
