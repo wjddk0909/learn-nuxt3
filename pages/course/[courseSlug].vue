@@ -44,7 +44,21 @@
       </div>
       <p class="q-mt-lg text-grey-8">{{ course?.content }}</p>
       <template #footer>
-        <div>footer</div>
+        <q-btn
+          v-if="prevCourse"
+          label="이전 강의"
+          color="primary"
+          unelevated
+          :to="prevCourse.path"
+        />
+        <q-space />
+        <q-btn
+          v-if="nextCourse"
+          label="다음 강의"
+          color="primary"
+          unelevated
+          :to="nextCourse.path"
+        />
       </template>
     </AppCard>
   </div>
@@ -53,7 +67,8 @@
 <script setup lang="ts">
 const route = useRoute();
 const courseSlug = route.params.courseSlug as string;
-const { course } = useCourse(courseSlug);
+const { course, prevCourse, nextCourse } = useCourse(courseSlug);
+console.log('courseSlug.vue 컴포넌트 setup hooks');
 </script>
 
 <style scoped></style>
