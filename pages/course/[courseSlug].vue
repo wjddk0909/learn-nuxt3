@@ -75,7 +75,7 @@
 const route = useRoute();
 const courseSlug = route.params.courseSlug as string;
 const { course, prevCourse, nextCourse } = useCourse(courseSlug);
-console.log('courseSlug.vue 컴포넌트 setup hooks');
+console.log('courseSlug.vue');
 definePageMeta({
   key: (route) => route.fullPath,
 });
