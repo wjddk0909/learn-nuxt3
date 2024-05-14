@@ -44,28 +44,30 @@
       </div>
       <p class="q-mt-lg text-grey-8">{{ course?.content }}</p>
       <template #footer>
-        <q-btn
-          v-if="prevCourse"
-          label="이전 강의"
-          color="primary"
-          unelevated
-          :to="prevCourse.path"
-        />
-        <q-btn
-          label="쿼리 추가"
-          color="dark"
-          unelevated
-          :to="{ path: $route.path, query: { timestamp: Date.now() } }"
-        />
-        {{ $route.fullPath }}
-        <q-space />
-        <q-btn
-          v-if="nextCourse"
-          label="다음 강의"
-          color="primary"
-          unelevated
-          :to="nextCourse.path"
-        />
+        <ClientOnly>
+          <q-btn
+            v-if="prevCourse"
+            label="이전 강의"
+            color="primary"
+            unelevated
+            :to="prevCourse.path"
+          />
+          <q-btn
+            label="쿼리 추가"
+            color="dark"
+            unelevated
+            :to="{ path: $route.path, query: { timestamp: Date.now() } }"
+          />
+          {{ $route.fullPath }}
+          <q-space />
+          <q-btn
+            v-if="nextCourse"
+            label="다음 강의"
+            color="primary"
+            unelevated
+            :to="nextCourse.path"
+          />
+        </ClientOnly>
       </template>
     </AppCard>
   </div>
@@ -76,9 +78,15 @@ const route = useRoute();
 const courseSlug = route.params.courseSlug as string;
 const { course, prevCourse, nextCourse } = useCourse(courseSlug);
 console.log('courseSlug.vue!!');
+// const title = ref('test');
 definePageMeta({
   key: (route) => route.fullPath,
+  title: 'My Home Page',
+  // title: title.value, // 전달된 메타데이터가 컴포넌트 밖으로 끌어올려지기 때문에 컴포넌트 내에서 선언된 변수를 definePageMeta에서 사용할 수 없다
+  pageType: '',
 });
+
+console.log('route.meta title:', route.meta.title);
 </script>
 
 <style scoped></style>
