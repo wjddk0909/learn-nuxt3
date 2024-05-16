@@ -18,6 +18,7 @@
 
 <script lang="ts">
 console.log('index.vue');
+export default {};
 </script>
 
 <script setup lang="ts"></script>
